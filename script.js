@@ -17,7 +17,7 @@ const questions = [
         image: "images/2.jpg"
     },
     {
-        question: "As governments consider deploying an AI security system that can predict crimes with 96% accuracy, what policy should guide its use?",
+        question: "Governments consider deploying an AI security system that can predict crimes with 96% accuracy, igniting global debate over safety and freedom. What policy should guide how it’s used?",
         optionA: "Limit predictive policing to serious crimes only (preserve freedom)",
         optionAScore: 1,
         optionB: "Approve full use to prevent saves lives (safety first)",
@@ -25,7 +25,7 @@ const questions = [
         image: "images/3.jpg"
     },
     {
-        question: "A mother pleads for permission to upload her dying child’s consciousness into the cloud, where AI can preserve him indefinitely. As the ethical authority, what do you choose?",
+        question: "A mother pleads for permission to upload her dying child’s consciousness into the cloud, where he can be preserved indefinitely. What do you choose?",
         optionA: "Deny request (death defines humanity)",
         optionAScore: 1,
         optionB: "Allow request (preservation is mercy)",
@@ -33,7 +33,7 @@ const questions = [
         image: "images/4.jpg"
     },
     {
-        question: "A new AI can predict guilt with near-perfect accuracy, prompting courts to consider replacing human judges entirely. As the decision-maker, what path do you choose?",
+        question: "The Automated Guilt Assessment Model (AGAM) can predict guilt with near-perfect accuracy, prompting courts to consider replacing human judges entirely. What do you choose?",
         optionA: "Reject as human judgment is imperfect, but essential",
         optionAScore: 1,
         optionB: "Approve full use to eliminate bias. Let justice be data-driven",
@@ -41,10 +41,10 @@ const questions = [
         image: "images/5.jpg"
     },
     {
-        question: "When learning something new, you're motivated by:",
-        optionA: "Reject",
+        question: "World governments propose a plan to create mandatory backups of every human mind to be preserved for future restoration. What do you decide?",
+        optionA: "Reject because identity must remain mortal and uncopyable",
         optionAScore: 1,
-        optionB: "B) The joy and excitement of learning right now",
+        optionB: "Approve so death becomes obsolete and minds can live on",
         optionBScore: 0,
         image: "images/6.jpg"
     }
