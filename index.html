@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Journey Within - A VR Experience</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="vr-background">
+        <div id="dynamicBackground"></div>
+        <div class="particles"></div>
+        <!-- <div class="grid-overlay"></div> -->
+        <!-- <div class="glow-orb glow-orb-1"></div>
+        <div class="glow-orb glow-orb-2"></div>
+        <div class="glow-orb glow-orb-3"></div> -->
+    </div>
+
+    <!-- Space Transition Effect -->
+    <div id="spaceTransition" class="space-transition">
+        <div class="warp-lines"></div>
+    </div>
+
+    <div class="container">
+        <!-- Start Screen -->
+        <div id="startScreen" class="screen active">
+            <div class="vr-frame">
+                <div class="title-sequence">
+                    <div class="chapter-label">CHAPTER I</div>
+                    <h1 class="vr-title">The Journey Within</h1>
+                    <div class="subtitle-line"></div>
+                    <p class="vr-subtitle">An Immersive Experience Through Time & Self</p>
+                    <div class="enter-portal">
+                        <button id="startBtn" class="vr-btn">
+                            <span class="btn-text">ENTER THE EXPERIENCE</span>
+                            <span class="btn-glow"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quiz Screen -->
+        <div id="quizScreen" class="screen">
+            <div class="vr-header">
+                <div class="progress-container">
+                    <div class="progress-track">
+                        <div id="progress" class="progress-fill"></div>
+                    </div>
+                    <div class="chapter-info">
+                        <span class="chapter-text">CHAPTER <span id="currentQuestion">1</span> OF 7</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="questionContainer" class="vr-question-space">
+                <h2 id="questionText" class="vr-question"></h2>
+                
+                <div class="vr-choices">
+                    <button class="vr-choice-btn choice-a" data-choice="A" id="optionA">
+                        <!-- <span class="choice-label">A</span> -->
+                        <span class="choice-text"></span>
+                        <span class="choice-shimmer"></span>
+                    </button>
+                    <button class="vr-choice-btn choice-b" data-choice="B" id="optionB">
+                        <!-- <span class="choice-label">B</span> -->
+                        <span class="choice-text"></span>
+                        <span class="choice-shimmer"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Result Screen -->
+        <div id="resultScreen" class="screen">
+            <!-- <div class="vr-frame"> -->
+                <div class="result-reveal">
+                    <div class="chapter-label">EPILOGUE</div>
+                    <h1 id="resultTitle" class="vr-title"></h1>
+                    <div class="result-icon-container">
+                        <div id="resultEmoji" class="result-icon"></div>
+                    </div>
+                    <div class="subtitle-line"></div>
+                    <p id="resultDescription" class="result-story"></p>
+                    <div class="score-showcase">
+                        <div class="score-label">YOUR JOURNEY SCORE</div>
+                        <div class="score-value"><span id="finalScore"></span> / 7</div>
+                    </div>
+                    <div class="enter-portal">
+                        <button id="restartBtn" class="vr-btn">
+                            <span class="btn-text">EXPERIENCE AGAIN</span>
+                            <span class="btn-glow"></span>
+                        </button>
+                    </div>
+                </div>
+            <!-- </div> -->
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
