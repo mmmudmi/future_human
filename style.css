@@ -15,6 +15,14 @@
     --glass-border: rgba(0, 217, 255, 0.2);
 }
 
+/* Thai language font styling */
+html[lang="th"],
+html[lang="th"] body,
+html[lang="th"] * {
+    font-family: 'Sarabun', 'Courier New', 'Courier', 'JetBrains Mono', monospace !important;
+    letter-spacing: 0.3px;
+}
+
 body {
     font-family: 'Courier New', 'Courier', 'JetBrains Mono', monospace;
     background: var(--deep-black);
@@ -1163,5 +1171,66 @@ body {
 .footer-logo img:hover {
     opacity: 1;
     transform: scale(1.05);
+}
+
+/* Language Selector */
+.language-selector {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 100;
+    display: flex;
+    gap: 10px;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    padding: 10px 15px;
+    border: 1px solid var(--glass-border);
+    border-radius: 25px;
+    animation: fadeIn 1s ease-out 0.5s both;
+}
+
+.lang-btn {
+    background: transparent;
+    border: 1px solid var(--glass-border);
+    color: var(--soft-white);
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    font-family: 'Courier New', 'Courier', 'JetBrains Mono', monospace;
+    font-weight: 300;
+}
+
+.lang-btn:hover {
+    border-color: var(--primary-gold);
+    color: var(--primary-gold);
+    box-shadow: 0 0 15px rgba(0, 217, 255, 0.2);
+}
+
+.lang-btn.active {
+    background: var(--glass-bg);
+    border-color: var(--primary-gold);
+    color: var(--primary-gold);
+    box-shadow: 0 0 20px rgba(0, 217, 255, 0.3);
+}
+
+.lang-btn:active {
+    transform: scale(0.95);
+}
+
+@media (max-width: 768px) {
+    .language-selector {
+        top: 10px;
+        right: 10px;
+        gap: 8px;
+        padding: 8px 10px;
+    }
+    
+    .lang-btn {
+        padding: 6px 12px;
+        font-size: 0.75rem;
+    }
 }
 
