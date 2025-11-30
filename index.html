@@ -40,6 +40,9 @@
     <div class="container">
         <!-- Start Screen -->
         <div id="startScreen" class="screen active">
+            <video id="startVideo" class="start-background-video" autoplay loop muted playsinline>
+                <source src="assets/bg.mp4" type="video/mp4">
+            </video>
             <div class="vr-frame">
                 <div class="title-sequence">
                     <div class="chapter-label">2038</div>
@@ -103,6 +106,41 @@
                             <span class="btn-text">EXPERIENCE AGAIN</span>
                             <span class="btn-glow"></span>
                         </button>
+                    </div>
+                    <div class="ai-info-box">
+                        <h3 id="aiInfoTitle" class="ai-info-title">Context</h3>
+                        <div class="ai-info-scrollable">
+                            <p class="ai-info-intro">
+                                Innovative AI tools may bring unprecedented health and prosperity. However, alongside tools, many leading AI companies have the stated goal of building superintelligence in the coming decade that can significantly outperform all humans on essentially all cognitive tasks. This has raised concerns, ranging from human economic obsolescence and disempowerment, losses of freedom, civil liberties, dignity, and control, to national security risks and even potential human extinction. The succinct statement below aims to create common knowledge of the growing number of experts and public figures who oppose a rush to superintelligence.
+                            </p>
+                            
+                            <div class="ai-statements">
+                                <div class="ai-statement">
+                                    <h4 class="statement-label">Center for AI Safety</h4>
+                                    <p class="statement-text">Mitigating the risk of extinction from AI should be a global priority alongside other societal-scale risks such as pandemics and nuclear war.</p>
+                                </div>
+                                
+                                <div class="ai-statement">
+                                    <h4 class="statement-label">Future of Life Institute</h4>
+                                    <p class="statement-text">We call for a prohibition on the development of superintelligence, not lifted before there is broad scientific consensus that it will be done safely and controllably, and strong public buy-in.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="ai-info-action">
+                                <p class="action-highlight">You can make a change</p>
+                                <p class="action-text">Sign these statements so governments see it more:</p>
+                                <div class="statement-links">
+                                    <a href="https://superintelligence-statement.org/" target="_blank" rel="noopener noreferrer" class="statement-link">
+                                        <span class="link-icon">→</span>
+                                        <span class="link-text">Superintelligence Statement</span>
+                                    </a>
+                                    <a href="https://aistatement.com/" target="_blank" rel="noopener noreferrer" class="statement-link">
+                                        <span class="link-icon">→</span>
+                                        <span class="link-text">AI Statement</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             <!-- </div> -->

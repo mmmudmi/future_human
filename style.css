@@ -314,6 +314,20 @@ body {
     pointer-events: auto;
 }
 
+/* Start Screen Background Video */
+.start-background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    display: block;
+    opacity: 0.3;
+    pointer-events: none;
+}
+
 /* Quiz Number Overlay */
 .quiz-number-overlay {
     position: fixed;
@@ -950,6 +964,182 @@ body {
     .vr-header {
         margin-bottom: 20px;
     }
+}
+
+/* AI Info Box */
+.ai-info-box {
+    margin-top: 40px;
+    padding: 20px;
+    border: 1px solid var(--glass-border);
+    border-radius: 15px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    max-height: 400px;
+    display: flex;
+    flex-direction: column;
+}
+
+.ai-info-title {
+    font-size: 1.2rem;
+    color: var(--neon-blue);
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    flex-shrink: 0;
+}
+
+.ai-info-scrollable {
+    overflow-y: auto;
+    padding-right: 10px;
+    flex: 1;
+}
+
+/* Scrollbar styling */
+.ai-info-scrollable::-webkit-scrollbar {
+    width: 6px;
+}
+
+.ai-info-scrollable::-webkit-scrollbar-track {
+    background: rgba(0, 217, 255, 0.05);
+    border-radius: 10px;
+}
+
+.ai-info-scrollable::-webkit-scrollbar-thumb {
+    background: var(--neon-blue);
+    border-radius: 10px;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.ai-info-scrollable::-webkit-scrollbar-thumb:hover {
+    opacity: 1;
+}
+
+.ai-info-intro {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: var(--soft-white);
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.ai-statements {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.ai-statement {
+    padding: 15px;
+    border-left: 3px solid var(--neon-blue);
+    background: rgba(0, 217, 255, 0.05);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.ai-statement:hover {
+    background: rgba(0, 217, 255, 0.1);
+    border-left-color: var(--primary-gold);
+    transform: translateX(5px);
+}
+
+.statement-label {
+    font-size: 0.85rem;
+    color: var(--primary-gold);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.statement-text {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--soft-white);
+    text-align: center;
+}
+
+.ai-info-action {
+    padding-top: 15px;
+    border-top: 1px solid var(--glass-border);
+    text-align: center;
+}
+
+.action-text {
+    font-size: 0.95rem;
+    color: var(--soft-white);
+    margin-bottom: 15px;
+    font-weight: 400;
+}
+
+.action-highlight {
+    font-size: 1.3rem;
+    color: var(--primary-gold);
+    margin-bottom: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-shadow: 0 0 30px rgba(0, 217, 255, 0.6);
+    animation: emphasizeGlow 2s ease-in-out infinite;
+}
+
+@keyframes emphasizeGlow {
+    0%, 100% { 
+        text-shadow: 0 0 30px rgba(0, 217, 255, 0.6);
+    }
+    50% { 
+        text-shadow: 0 0 50px rgba(0, 217, 255, 0.9), 0 0 20px rgba(212, 175, 55, 0.6);
+    }
+}
+
+.statement-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.statement-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 16px;
+    background: rgba(0, 217, 255, 0.1);
+    border: 1px solid var(--neon-blue);
+    border-radius: 8px;
+    color: var(--neon-blue);
+    text-decoration: none;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.statement-link:hover {
+    background: rgba(0, 217, 255, 0.2);
+    box-shadow: 0 0 20px rgba(0, 217, 255, 0.3);
+    transform: translateY(-3px);
+}
+
+.statement-link:active {
+    transform: translateY(-1px);
+}
+
+.link-icon {
+    font-weight: 600;
+    transition: transform 0.3s ease;
+}
+
+.statement-link:hover .link-icon {
+    transform: translateX(3px);
+}
+
+.link-text {
+    font-weight: 500;
 }
 
 /* Footer Logo */
