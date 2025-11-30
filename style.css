@@ -23,6 +23,11 @@ html[lang="th"] * {
     letter-spacing: 0.3px;
 }
 
+/* Exclude Font Awesome icons from Thai font override */
+html[lang="th"] i {
+    font-family: 'Font Awesome 6 Free' !important;
+}
+
 body {
     font-family: 'Courier New', 'Courier', 'JetBrains Mono', monospace;
     background: var(--deep-black);
