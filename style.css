@@ -603,7 +603,7 @@ body {
 }
 
 .choice-text {
-    font-size: 0.95rem;
+    font-size: 1.25rem;
     color: var(--soft-white);
     text-align: center;
     font-weight: 300;
