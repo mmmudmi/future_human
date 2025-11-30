@@ -104,6 +104,12 @@ function startQuiz() {
     if (quizVideo) quizVideo.classList.add('show');
     if (quizNumberOverlay) quizNumberOverlay.classList.add('show');
     
+    // Play background music
+    const backgroundMusic = document.getElementById('backgroundMusic');
+    if (backgroundMusic) {
+        backgroundMusic.play().catch(err => console.log('Music play failed:', err));
+    }
+    
     currentQuestionIndex = 0;
     scoreH = 0;
     scoreA = 0;
