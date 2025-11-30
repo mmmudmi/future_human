@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&family=Sarabun:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
 </head>
 <body>
@@ -150,11 +151,26 @@
     <script src="translations.js"></script>
     <script src="script.js"></script>
 
-    <!-- Language Selector -->
+    <!-- Language Selector Dropdown -->
     <div class="language-selector">
-        <button class="lang-btn active" data-lang="en">English</button>
-        <button class="lang-btn" data-lang="th">ไทย</button>
-        <button class="lang-btn" data-lang="ru">Русский</button>
+        <button class="lang-toggle" id="langToggle" title="Select Language">
+            <i class="fa-solid fa-globe"></i>
+            <span class="lang-code">EN</span>
+        </button>
+        <div class="lang-dropdown" id="langDropdown">
+            <div class="lang-option" data-lang="en">
+                <span class="lang-flag">🇺🇸</span>
+                <span class="lang-name">English</span>
+            </div>
+            <div class="lang-option" data-lang="th">
+                <span class="lang-flag">🇹🇭</span>
+                <span class="lang-name">ไทย</span>
+            </div>
+            <div class="lang-option" data-lang="ru">
+                <span class="lang-flag">🇷🇺</span>
+                <span class="lang-name">Русский</span>
+            </div>
+        </div>
     </div>
 
     <!-- Footer Logo -->

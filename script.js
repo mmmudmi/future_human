@@ -108,15 +108,33 @@ const finalScoreA = document.getElementById('finalScoreA');
 
 // Language event listeners
 function initLanguageSwitcher() {
-    const langButtons = document.querySelectorAll('.lang-btn');
-    langButtons.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            const lang = e.target.dataset.lang;
+    const langToggle = document.getElementById('langToggle');
+    const langDropdown = document.getElementById('langDropdown');
+    const langOptions = document.querySelectorAll('.lang-option');
+    
+    // Toggle dropdown on button click
+    langToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        langDropdown.classList.toggle('active');
+    });
+    
+    // Handle language option selection
+    langOptions.forEach(option => {
+        option.addEventListener('click', (e) => {
+            const lang = option.dataset.lang;
             switchLanguage(lang);
+            langDropdown.classList.remove('active');
         });
     });
     
-    // Set initial active button
+    // Close dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.language-selector')) {
+            langDropdown.classList.remove('active');
+        }
+    });
+    
+    // Set initial state
     updateLanguageButtonState();
 }
 
@@ -138,12 +156,26 @@ function switchLanguage(lang) {
 }
 
 function updateLanguageButtonState() {
-    const langButtons = document.querySelectorAll('.lang-btn');
-    langButtons.forEach(btn => {
-        if (btn.dataset.lang === currentLanguage) {
-            btn.classList.add('active');
+    const langToggle = document.getElementById('langToggle');
+    const langOptions = document.querySelectorAll('.lang-option');
+    
+    // Update toggle button with current language code and selected option styling
+    const langCodeMap = {
+        en: 'EN',
+        th: 'TH',
+        ru: 'RU'
+    };
+    
+    if (langToggle) {
+        langToggle.querySelector('.lang-code').textContent = langCodeMap[currentLanguage] || 'EN';
+    }
+    
+    // Update dropdown options styling
+    langOptions.forEach(option => {
+        if (option.dataset.lang === currentLanguage) {
+            option.classList.add('active');
         } else {
-            btn.classList.remove('active');
+            option.classList.remove('active');
         }
     });
 }
