@@ -8,7 +8,7 @@ const questions = [
         optionB: "Prioritize efficiency and logical stability for civilization's long-term survival",
         optionBH: 0,
         optionBA: 2,
-        image: "images/1.jpg"
+        image: "assets/1.png"
     },
     {
         question: "In a future where automation has displaced 45% of the global workforce, what policy should guide how AI-managed economies support society moving forward?",
@@ -18,7 +18,7 @@ const questions = [
         optionB: "Allow AI corporations to reinvest profits to maximize innovation (progress over comfort)",
         optionBH: 0,
         optionBA: 1,
-        image: "images/2.jpg"
+        image: "assets/2.png"
     },
     {
         question: "Governments consider deploying an AI security system that can predict crimes with 96% accuracy, igniting global debate over safety and freedom. What policy should guide how it's used?",
@@ -28,7 +28,7 @@ const questions = [
         optionB: "Approve full use to prevent all crime (safety at scale)",
         optionBH: 0,
         optionBA: 2,
-        image: "images/3.jpg"
+        image: "assets/3.png"
     },
     {
         question: "A mother pleads for permission to upload her dying child's consciousness into the cloud, where he can be preserved indefinitely. What do you choose?",
@@ -38,7 +38,7 @@ const questions = [
         optionB: "Allow request (erosion of boundaries—upload the child)",
         optionBH: 0,
         optionBA: 1,
-        image: "images/4.jpg"
+        image: "assets/4.png"
     },
     {
         question: "The Automated Guilt Assessment Model (AGAM) can predict guilt with near-perfect accuracy, prompting courts to consider replacing human judges entirely. What do you choose?",
@@ -48,7 +48,7 @@ const questions = [
         optionB: "Approve AI judges (eliminate bias with full automation)",
         optionBH: 0,
         optionBA: 1,
-        image: "images/5.jpg"
+        image: "assets/5.png"
     },
     {
         question: "World governments propose mandatory backups of every human mind to be preserved for future restoration. What do you decide?",
@@ -58,7 +58,7 @@ const questions = [
         optionB: "Approve (immortality through AI—death becomes obsolete)",
         optionBH: 0,
         optionBA: 2,
-        image: "images/6.jpg"
+        image: "assets/6.png"
     }
 ];
 
@@ -97,6 +97,13 @@ optionB.addEventListener('click', () => selectAnswer('B'));
 function startQuiz() {
     startScreen.classList.remove('active');
     quizScreen.classList.add('active');
+    
+    // Show video and image overlay
+    const quizVideo = document.getElementById('quizVideo');
+    const quizNumberOverlay = document.getElementById('quizNumberOverlay');
+    if (quizVideo) quizVideo.classList.add('show');
+    if (quizNumberOverlay) quizNumberOverlay.classList.add('show');
+    
     currentQuestionIndex = 0;
     scoreH = 0;
     scoreA = 0;
@@ -108,9 +115,11 @@ function showQuestion() {
     const question = questions[currentQuestionIndex];
     questionText.textContent = question.question;
     
-    // Set background image
-    dynamicBackground.style.backgroundImage = `url('${question.image}')`;
-    dynamicBackground.classList.add('active');
+    // Update the quiz number overlay image for each question
+    const quizNumberOverlay = document.getElementById('quizNumberOverlay');
+    if (quizNumberOverlay && question.image) {
+        quizNumberOverlay.src = question.image;
+    }
     
     // Update choice text (remove A) and B) prefix as it's in the label)
     const optionAText = optionA.querySelector('.choice-text');
@@ -157,8 +166,11 @@ function showResults() {
     quizScreen.classList.remove('active');
     resultScreen.classList.add('active');
     
-    // Remove background image for result screen
-    dynamicBackground.classList.remove('active');
+    // Hide video and image overlay
+    const quizVideo = document.getElementById('quizVideo');
+    const quizNumberOverlay = document.getElementById('quizNumberOverlay');
+    if (quizVideo) quizVideo.classList.remove('show');
+    if (quizNumberOverlay) quizNumberOverlay.classList.remove('show');
 
     if (scoreA >= scoreH) {
         // AI Control is higher or equal — danger outcomes
