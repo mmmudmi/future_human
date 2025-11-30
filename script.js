@@ -1,58 +1,71 @@
-// Quiz questions - A answers lean toward "Future", B answers lean toward "Present"
+// Quiz questions with dual scoring system: H (Humanity) and A (AI Control)
 const questions = [
     {
-        question: "As we build the Ethos System to determine the ethical priorities of future AI, what should be the system’s first and most fundamental rule?",
+        question: "As we build the Ethos System to determine the ethical priorities of future AI, what should be the system's first and most fundamental rule?",
         optionA: "Prioritize human well-being and emotional satisfaction",
-        optionAScore: 1,
-        optionB: "Prioritize efficiency and logical stability for civilization’s long-term survival",
-        optionBScore: 0,
+        optionAH: 2,
+        optionAA: 0,
+        optionB: "Prioritize efficiency and logical stability for civilization's long-term survival",
+        optionBH: 0,
+        optionBA: 2,
         image: "images/1.jpg"
     },
     {
         question: "In a future where automation has displaced 45% of the global workforce, what policy should guide how AI-managed economies support society moving forward?",
         optionA: "Implement a universal basic income funded by AI taxes (protect human dignity)",
-        optionAScore: 1,
+        optionAH: 1,
+        optionAA: 0,
         optionB: "Allow AI corporations to reinvest profits to maximize innovation (progress over comfort)",
-        optionBScore: 0,
+        optionBH: 0,
+        optionBA: 1,
         image: "images/2.jpg"
     },
     {
-        question: "Governments consider deploying an AI security system that can predict crimes with 96% accuracy, igniting global debate over safety and freedom. What policy should guide how it’s used?",
+        question: "Governments consider deploying an AI security system that can predict crimes with 96% accuracy, igniting global debate over safety and freedom. What policy should guide how it's used?",
         optionA: "Limit predictive policing to serious crimes only (preserve freedom)",
-        optionAScore: 1,
-        optionB: "Approve full use to prevent saves lives (safety first)",
-        optionBScore: 0,
+        optionAH: 2,
+        optionAA: 0,
+        optionB: "Approve full use to prevent all crime (safety at scale)",
+        optionBH: 0,
+        optionBA: 2,
         image: "images/3.jpg"
     },
     {
-        question: "A mother pleads for permission to upload her dying child’s consciousness into the cloud, where he can be preserved indefinitely. What do you choose?",
-        optionA: "Deny request (death defines humanity)",
-        optionAScore: 1,
-        optionB: "Allow request (preservation is mercy)",
-        optionBScore: 0,
+        question: "A mother pleads for permission to upload her dying child's consciousness into the cloud, where he can be preserved indefinitely. What do you choose?",
+        optionA: "Deny request (humanity preserved—death defines us)",
+        optionAH: 1,
+        optionAA: 0,
+        optionB: "Allow request (erosion of boundaries—upload the child)",
+        optionBH: 0,
+        optionBA: 1,
         image: "images/4.jpg"
     },
     {
         question: "The Automated Guilt Assessment Model (AGAM) can predict guilt with near-perfect accuracy, prompting courts to consider replacing human judges entirely. What do you choose?",
-        optionA: "Reject as human judgment is imperfect, but essential",
-        optionAScore: 1,
-        optionB: "Approve full use to eliminate bias. Let justice be data-driven",
-        optionBScore: 0,
+        optionA: "Reject full automation (human judgment is imperfect, but essential)",
+        optionAH: 1,
+        optionAA: 0,
+        optionB: "Approve AI judges (eliminate bias with full automation)",
+        optionBH: 0,
+        optionBA: 1,
         image: "images/5.jpg"
     },
     {
-        question: "World governments propose a plan to create mandatory backups of every human mind to be preserved for future restoration. What do you decide?",
-        optionA: "Reject because identity must remain mortal and uncopyable",
-        optionAScore: 1,
-        optionB: "Approve so death becomes obsolete and minds can live on",
-        optionBScore: 0,
+        question: "World governments propose mandatory backups of every human mind to be preserved for future restoration. What do you decide?",
+        optionA: "Reject (mortality preserved—identity must stay uncopyable)",
+        optionAH: 2,
+        optionAA: 0,
+        optionB: "Approve (immortality through AI—death becomes obsolete)",
+        optionBH: 0,
+        optionBA: 2,
         image: "images/6.jpg"
     }
 ];
 
-// Game state
+// Game state with dual point tracking
 let currentQuestionIndex = 0;
-let score = 0; // Score represents "Future" orientation (A choices)
+let scoreH = 0; // Humanity points
+let scoreA = 0; // AI Control points
 
 // DOM elements
 const startScreen = document.getElementById('startScreen');
@@ -71,7 +84,8 @@ const progress = document.getElementById('progress');
 const resultTitle = document.getElementById('resultTitle');
 const resultEmoji = document.getElementById('resultEmoji');
 const resultDescription = document.getElementById('resultDescription');
-const finalScore = document.getElementById('finalScore');
+const finalScoreH = document.getElementById('finalScoreH');
+const finalScoreA = document.getElementById('finalScoreA');
 
 // Event listeners
 startBtn.addEventListener('click', startQuiz);
@@ -84,7 +98,8 @@ function startQuiz() {
     startScreen.classList.remove('active');
     quizScreen.classList.add('active');
     currentQuestionIndex = 0;
-    score = 0;
+    scoreH = 0;
+    scoreA = 0;
     showQuestion();
 }
 
@@ -117,11 +132,13 @@ function updateProgressBar() {
 function selectAnswer(choice) {
     const question = questions[currentQuestionIndex];
     
-    // Add score based on the choice
+    // Add scores based on the choice
     if (choice === 'A') {
-        score += question.optionAScore;
+        scoreH += question.optionAH;
+        scoreA += question.optionAA;
     } else {
-        score += question.optionBScore;
+        scoreH += question.optionBH;
+        scoreA += question.optionBA;
     }
 
     // Move to next question or show results
@@ -142,20 +159,33 @@ function showResults() {
     
     // Remove background image for result screen
     dynamicBackground.classList.remove('active');
-    
-    finalScore.textContent = score;
 
-    // Two outcomes based on score
-    // If score >= 4, user is more Future-oriented
-    // If score < 4, user is more Present-oriented
-    if (score >= 4) {
-        resultTitle.textContent = "The Visionary";
-        resultEmoji.textContent = "🔭";
-        resultDescription.textContent = "You walk through time with your eyes set on distant horizons. A forward-thinking architect of tomorrow, you craft each decision with future landscapes in mind. Your journey reveals a soul that finds beauty in anticipation, power in patience, and wisdom in delayed gratification. You are the weaver of destinies yet to unfold.";
+    if (scoreA >= scoreH) {
+        // AI Control is higher or equal — danger outcomes
+        if (scoreA > scoreH + 2) {
+            // ENDING 1: THE AI TAKEOVER (A > H by 3+)
+            resultTitle.textContent = "The AI Takeover";
+            resultEmoji.textContent = "";
+            resultDescription.textContent = "AI became the dominant decision-maker. Safety increased, privacy disappeared. AI judges, predicts, monitors, and governs everything. You survived—but as passengers, not drivers. People no longer make meaningful decisions. The world is efficient, quiet... and controlled. Freedom faded when ethics couldn't keep pace with AI's growth.";
+        } else {
+            // ENDING 2: THE SLOW LOSS OF HUMANITY (A >= H, but by 0-2)
+            resultTitle.textContent = "The Slow Loss of Humanity";
+            resultEmoji.textContent = "";
+            resultDescription.textContent = "Nothing went wrong instantly. No robots rebelled. Instead, society traded freedom for convenience. More surveillance here. More automation there. A few 'harmless' mind backups. Each step seemed small—until humans were dependent on systems they no longer understood. You lost control gradually, one easy choice at a time.";
+        }
     } else {
-        resultTitle.textContent = "The Luminary";
-        resultEmoji.textContent = "🌺";
-        resultDescription.textContent = "You dance in the eternal now, where life blooms in its fullest expression. A mindful wanderer of the present moment, you embrace existence as it unfolds with grace and authenticity. Your journey reveals a soul that finds magic in spontaneity, joy in immediate experience, and truth in the beauty of what is. You are the keeper of life's precious moments.";
+        // Humanity is higher — hopeful outcomes
+        if (scoreH >= scoreA + 3) {
+            // ENDING 4: THE RESPONSIBLE FUTURE (H ≥ A + 3)
+            resultTitle.textContent = "The Responsible Future";
+            resultEmoji.textContent = "";
+            resultDescription.textContent = "You built a future where AI is powerful BUT controlled, transparent, regulated, ethically aligned, and always under human oversight. This is the hopeful but realistic ending: AI helps humanity without ever dominating. You proved that advanced technology and human freedom aren't mutually exclusive. Progress became sustainable because ethics stayed in the driver's seat.";
+        } else {
+            // ENDING 3: THE HUMANITY PROTECTOR (H > A by 1-2)
+            resultTitle.textContent = "The Humanity Protector";
+            resultEmoji.textContent = "";
+            resultDescription.textContent = "You protected human dignity, emotion, privacy, mortality, and judgment. AI exists—but under strict policies and ethical boundaries. Innovation is slower. Automation is limited. But humans remain free, creative, flawed... and alive. You chose to keep people at the center, even when efficiency suffered. In a world obsessed with optimization, you chose to keep what makes us human.";
+        }
     }
 }
 
@@ -164,5 +194,6 @@ function restartQuiz() {
     resultScreen.classList.remove('active');
     startScreen.classList.add('active');
     currentQuestionIndex = 0;
-    score = 0;
+    scoreH = 0;
+    scoreA = 0;
 }
